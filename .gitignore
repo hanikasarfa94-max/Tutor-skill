@@ -35,5 +35,11 @@ materials/
 *.eml
 *.mbox
 
+# Local Claude memory / session data
+.claude/
+
+# Local development notes
+develop_plan.md
+
 # Logs
 *.log
