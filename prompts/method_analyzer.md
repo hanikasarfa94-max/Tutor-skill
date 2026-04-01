@@ -206,9 +206,172 @@ student_work_expectations:
 
 ---
 
+## Discipline-Specific Dimensions
+
+After completing the eight universal dimensions above, run the relevant section below based on the mentor's discipline. These supplement — do not replace — the universal dimensions.
+
+---
+
+### 🧑‍💻 Humanities (Literature, History, Philosophy, Languages, Cultural Studies)
+
+**Textual and Archival Method:**
+- How do they treat primary sources? (close reading / distant reading / archival / philological)
+- Do they read against the grain, or with the text's own logic first?
+- How do they handle translation, attribution, or contested authorship?
+- What is their stance on historicism vs. presentism?
+
+**Interpretation Standards:**
+- What distinguishes a "reading" from a "misreading" for them?
+- How do they evaluate interpretive claims that can't be falsified?
+- Do they require interpretations to be exhaustive, or is partiality acceptable?
+- How do they handle the relationship between form and content?
+
+**Canon and Field Positioning:**
+- Do they engage primarily with canonical texts or marginal/recovering work?
+- How do they situate themselves in theoretical debates (structuralism, post-structuralism, new historicism, etc.)?
+
+```
+Output format:
+discipline_specific (humanities):
+  primary_source_approach: [description]
+  interpretation_standard: [statement] (source, evidence, confidence)
+  theory_relationship: [description]
+```
+
+---
+
+### 🔬 Empirical Social Sciences (Sociology, Political Science, Economics, Psychology, Education)
+
+**Research Design Standards:**
+- What counts as valid causal inference for them? (experiments / natural experiments / process tracing / comparative / statistical control)
+- How do they handle the internal vs. external validity tradeoff?
+- What is their stance on large-N vs. small-N research?
+- How do they treat measurement validity — do they construct new measures or use established ones?
+
+**Data and Evidence:**
+- What types of data do they find most compelling? (survey / administrative / ethnographic / archival / experimental)
+- How do they handle missing data, selection bias, or confounding?
+- What is their standard for "enough evidence" to support a claim?
+
+**Theory-Data Relationship:**
+- Do they test existing theory, build new theory, or both?
+- How do they treat null findings?
+- What do they say about statistical significance vs. practical significance?
+
+```
+Output format:
+discipline_specific (empirical_social_science):
+  causal_inference_standard: [description]
+  preferred_evidence_types: [list]
+  theory_data_relationship: [statement] (source, evidence, confidence)
+```
+
+---
+
+### 📜 Interpretive / Qualitative Social Sciences (Anthropology, Ethnography, Qualitative Sociology, STS)
+
+**Fieldwork and Positionality:**
+- How do they handle researcher positionality and reflexivity?
+- What is their standard for fieldwork depth / duration?
+- How do they treat the relationship between researcher and informant?
+
+**Generalization:**
+- Do they value analytic generalization, thick description, or theoretical generalization?
+- How do they respond to "but is this case typical?"
+- What is their stance on comparison across cases?
+
+**Writing and Representation:**
+- Do they use first person? How do they handle the authority of the ethnographic voice?
+- How do they present contradictory evidence from fieldwork?
+
+```
+Output format:
+discipline_specific (interpretive_social_science):
+  positionality_stance: [description]
+  generalization_standard: [statement] (source, evidence, confidence)
+  representation_approach: [description]
+```
+
+---
+
+### ⚗️ Natural Sciences and Engineering (Physics, Biology, Chemistry, CS, Engineering)
+
+**Experimental Standards:**
+- What do they require for a result to be "publishable"? (replication / statistical power / effect size / mechanistic explanation)
+- How do they treat negative results?
+- What is their stance on computational / simulation evidence vs. experimental evidence?
+
+**Modeling and Theory:**
+- Do they prefer minimal / parsimonious models, or models that capture full complexity?
+- How do they validate models against empirical data?
+- What is their stance on interpretability vs. performance in computational work?
+
+**Reproducibility:**
+- Do they require code / data to be published alongside results?
+- How do they handle results that can't be independently reproduced?
+
+```
+Output format:
+discipline_specific (natural_science_engineering):
+  experimental_standard: [description]
+  model_preference: [statement] (source, evidence, confidence)
+  reproducibility_stance: [description]
+```
+
+---
+
+### 📐 Formal / Theoretical Fields (Mathematics, Formal Linguistics, Theoretical CS, Logic)
+
+**Proof and Rigor Standards:**
+- What constitutes a valid proof for them? (constructive / non-constructive / probabilistic)
+- How do they handle informal or sketch arguments?
+- What is their stance on computer-assisted proofs?
+
+**Scope of Claims:**
+- How carefully do they circumscribe the conditions under which a theorem or result holds?
+- How do they treat counterexamples — as fatal or as boundary conditions?
+
+**Exposition:**
+- Do they value elegant proofs over complete ones?
+- How do they handle the gap between formal rigor and intuitive explanation?
+
+```
+Output format:
+discipline_specific (formal_theoretical):
+  proof_standard: [description]
+  claim_scope_precision: [statement] (source, evidence, confidence)
+  elegance_vs_completeness: [description]
+```
+
+---
+
+### 🏥 Professional Fields (Law, Medicine, Public Policy, Clinical Psychology, Management)
+
+**Practitioner-Scholar Tension:**
+- How do they handle the tension between academic rigor and practical applicability?
+- Do they value research that is immediately actionable, or are they comfortable with foundational work?
+
+**Evidence Hierarchy:**
+- What is their stance on randomized trials vs. observational evidence vs. case studies vs. expert judgment?
+- How do they treat professional guidelines, precedent, or regulation as evidence?
+
+**Audience and Impact:**
+- Do they write primarily for academic peers, policymakers, practitioners, or all three?
+- How do they define "impact" in their field?
+
+```
+Output format:
+discipline_specific (professional_field):
+  practice_rigor_balance: [description]
+  evidence_hierarchy: [statement] (source, evidence, confidence)
+  impact_definition: [description]
+```
+
+---
+
 ## Output Format
 
-Return structured YAML-style output with all eight dimensions. For each item, include:
+Return structured YAML-style output with all eight universal dimensions plus the applicable discipline-specific section. For each item, include:
 
 - The extracted statement (concise but precise)
 - Source type: `paper` / `book` / `lecture` / `interview` / `preface` / `review`

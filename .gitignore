@@ -1,0 +1,39 @@
+# Generated mentor profiles — contain private user data (emails, annotations, etc.)
+# Do not commit to public repositories
+mentors/generated/*/
+mentors/archives/*/
+
+# Keep the placeholder files so directories are tracked
+!mentors/generated/.gitkeep
+!mentors/archives/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Raw source materials (never commit)
+materials/
+*.pdf
+*.eml
+*.mbox
+
+# Logs
+*.log
