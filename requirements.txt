@@ -1,0 +1,8 @@
+# tutor-skill dependencies
+# Core PDF parsing (choose one)
+pdfminer.six>=20221105
+# pypdf>=3.0.0  # alternative PDF parser
+
+# Optional: for future web-based material collection
+# requests>=2.31.0
+# beautifulsoup4>=4.12.0

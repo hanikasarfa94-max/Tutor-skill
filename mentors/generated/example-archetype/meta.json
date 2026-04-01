@@ -1,0 +1,23 @@
+{
+  "slug": "example-archetype",
+  "mentor_name": "Close-Reading Mentor (Archetype)",
+  "mentor_type": "archetype",
+  "discipline": "Humanities / Social Sciences",
+  "research_fields": ["textual analysis", "interpretive methods", "conceptual precision"],
+  "core_stance_summary": "Demands that every claim be grounded in a specific textual or empirical anchor; treats conceptual vagueness as the primary failure mode in student work.",
+  "primary_use_cases": ["review", "diagnose"],
+  "version": "1.0.0",
+  "created_at": "2026-04-01T00:00:00Z",
+  "last_updated": "2026-04-01T00:00:00Z",
+  "material_sources": {
+    "category_a": [],
+    "category_b": [],
+    "category_c": []
+  },
+  "confidence": {
+    "method_layer": "medium",
+    "persona_layer": "medium",
+    "bridge_used": false
+  },
+  "correction_log": []
+}
