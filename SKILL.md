@@ -1,3 +1,8 @@
+---
+name: tutor-skill
+description: Distill a real research mentor (or mentor archetype) from papers, emails, and annotations into a structured Claude Code skill. Use the generated mentor for ongoing research guidance — diagnose problems, review drafts, advance stalled work — with persistent memory across sessions. Commands: /create-mentor, /mentor {slug} [diagnose|review|advance], /update-mentor, /list-mentors, /mentor-rollback.
+---
+
 # Research Mentor Skill
 
 A Claude Code skill for distilling research mentors — capturing their academic method, mentoring style, and guidance logic into a correctable, iterative, and long-term usable mentor system.
