@@ -23,6 +23,28 @@ Recognized commands:
 
 ---
 
+## Before You Run `/create-mentor` — Preprocess Your Materials
+
+Raw PDFs, chat exports, and email files are **never fed directly into the skill during invocation**. Run the preprocessor CLI first:
+
+```bash
+# Papers / PDFs
+python tools/prepare_materials.py --dir your_materials/ --type papers --output ready.md
+
+# Emails
+python tools/prepare_materials.py --dir emails/ --type emails --output emails_ready.md
+
+# Chat logs (WeChat, Slack, DingTalk)
+python tools/prepare_materials.py --dir chats/ --type chats --mentor-name "Prof. Zhang" --output chats_ready.md
+
+# Auto-detect everything in one folder
+python tools/prepare_materials.py --dir all_materials/ --type auto --output all_ready.md
+```
+
+This runs in seconds and outputs a single structured markdown file. Then use that file as your material input when `/create-mentor` asks.
+
+---
+
 ## `/create-mentor`
 
 **Step 1 — Run intake.**
