@@ -1,11 +1,11 @@
----
+﻿---
 name: tutor-skill
-description: Distill a real research mentor (or mentor archetype) from papers, emails, and annotations into a structured Claude Code skill. Use the generated mentor for ongoing research guidance — diagnose problems, review drafts, advance stalled work — with persistent memory across sessions. Commands: /create-mentor, /mentor {slug} [diagnose|review|advance], /update-mentor, /list-mentors, /mentor-rollback.
+description: "Distill a real research mentor from papers, emails, and annotations into a reusable Claude Code skill. Use the mentor for ongoing research guidance 鈥?diagnose problems, review drafts, advance stalled work 鈥?with persistent memory across sessions."
 ---
 
 # Research Mentor Skill
 
-A Claude Code skill for distilling research mentors — capturing their academic method, mentoring style, and guidance logic into a correctable, iterative, and long-term usable mentor system.
+A Claude Code skill for distilling research mentors 鈥?capturing their academic method, mentoring style, and guidance logic into a correctable, iterative, and long-term usable mentor system.
 
 ---
 
@@ -23,7 +23,7 @@ Recognized commands:
 
 ---
 
-## Before You Run `/create-mentor` — Preprocess Your Materials
+## Before You Run `/create-mentor` 鈥?Preprocess Your Materials
 
 Raw PDFs, chat exports, and email files are **never fed directly into the skill during invocation**. Run the preprocessor CLI first:
 
@@ -47,7 +47,7 @@ This runs in seconds and outputs a single structured markdown file. Then use tha
 
 ## `/create-mentor`
 
-**Step 1 — Run intake.**
+**Step 1 鈥?Run intake.**
 Read `prompts/intake.md` in full using the Read tool, then follow its instructions to collect:
 - Mentor name and slug
 - Mentor type (specific / archetype / hybrid)
@@ -58,18 +58,18 @@ Read `prompts/intake.md` in full using the Read tool, then follow its instructio
 
 Do not proceed to Step 2 until the user confirms the intake summary.
 
-**Step 2 — Analyze materials.**
+**Step 2 鈥?Analyze materials.**
 Read and follow each analyzer prompt in order, applying it to the materials the user has provided:
 
-- Read `prompts/method_analyzer.md` → apply to all Category A materials → save output as `[method_analysis]`
-- Read `prompts/mentoring_style_analyzer.md` → apply to all Category B materials → save output as `[persona_analysis]`
-- If Category C materials exist: Read `prompts/bridge_analyzer.md` → apply → save as `[bridge_analysis]`
+- Read `prompts/method_analyzer.md` 鈫?apply to all Category A materials 鈫?save output as `[method_analysis]`
+- Read `prompts/mentoring_style_analyzer.md` 鈫?apply to all Category B materials 鈫?save output as `[persona_analysis]`
+- If Category C materials exist: Read `prompts/bridge_analyzer.md` 鈫?apply 鈫?save as `[bridge_analysis]`
 - If no Category C materials: skip bridge analysis, note it as absent
 
-**Step 3 — Build mentor files.**
+**Step 3 鈥?Build mentor files.**
 Read `prompts/mentor_builder.md` in full. Use `[method_analysis]`, `[persona_analysis]`, and `[bridge_analysis]` (if present) plus the intake summary as inputs. Follow the builder's instructions to generate the three output files.
 
-**Step 4 — Write files.**
+**Step 4 鈥?Write files.**
 Create the directory `mentors/generated/{slug}/` and write:
 - `mentors/generated/{slug}/method.md`
 - `mentors/generated/{slug}/persona.md`
@@ -78,15 +78,15 @@ Create the directory `mentors/generated/{slug}/` and write:
 
 Use the Write tool for each file. The content and schema for each file is defined in `prompts/mentor_builder.md` and `docs/schema.md`.
 
-**Step 5 — Confirm to user.**
+**Step 5 鈥?Confirm to user.**
 ```
 Mentor skill created: {slug}
 
   Files written to: mentors/generated/{slug}/
-    ✓ method.md
-    ✓ persona.md
-    ✓ memory.md
-    ✓ meta.json
+    鉁?method.md
+    鉁?persona.md
+    鉁?memory.md
+    鉁?meta.json
 
   To use this mentor:  /mentor {slug}
   To correct it:       /update-mentor {slug}
@@ -96,7 +96,7 @@ Mentor skill created: {slug}
 
 ## `/mentor {slug}` or `/mentor {slug} [mode]`
 
-**Step 1 — Check mentor exists.**
+**Step 1 鈥?Check mentor exists.**
 Use the Glob tool to check if `mentors/generated/{slug}/` exists and contains `method.md`, `persona.md`, and `memory.md`.
 
 If not found:
@@ -106,7 +106,7 @@ Available mentors: (list directories found under mentors/generated/)
 Run /list-mentors to see all, or /create-mentor to build one.
 ```
 
-**Step 2 — Load mentor context.**
+**Step 2 鈥?Load mentor context.**
 Use the Read tool to read all three files:
 - `mentors/generated/{slug}/method.md`
 - `mentors/generated/{slug}/persona.md`
@@ -114,7 +114,7 @@ Use the Read tool to read all three files:
 
 Hold all three in context for the duration of the session.
 
-**Step 3 — Read and follow the runtime prompt.**
+**Step 3 鈥?Read and follow the runtime prompt.**
 Read `prompts/use_mentor.md` in full. This file defines:
 - How to determine or ask for the mode (diagnose / review / advance)
 - The fixed output structure for each mode
@@ -123,17 +123,17 @@ Read `prompts/use_mentor.md` in full. This file defines:
 
 Follow `use_mentor.md` exactly for the remainder of the session.
 
-**Step 4 — Session close.**
+**Step 4 鈥?Session close.**
 When the session ends, read `prompts/session_closer.md` and follow its instructions to extract updates from the session and write the updated `memory.md` using the Write tool.
 
 ---
 
 ## `/update-mentor {slug}`
 
-**Step 1 — Check mentor exists.**
+**Step 1 鈥?Check mentor exists.**
 Glob `mentors/generated/{slug}/`. If not found, tell the user.
 
-**Step 2 — Ask what kind of update.**
+**Step 2 鈥?Ask what kind of update.**
 ```
 What would you like to do?
   1. Add new materials (papers, emails, annotations, etc.)
@@ -141,11 +141,11 @@ What would you like to do?
   3. Both
 ```
 
-**Step 3a — If adding materials:**
+**Step 3a 鈥?If adding materials:**
 Read `prompts/merger.md` in full and follow its instructions.
-After merging: read `mentors/generated/{slug}/meta.json`, increment the patch version (`1.0.x → 1.0.x+1`), archive the previous files to `mentors/archives/{slug}/{previous_version}/`, and write the updated `meta.json`.
+After merging: read `mentors/generated/{slug}/meta.json`, increment the patch version (`1.0.x 鈫?1.0.x+1`), archive the previous files to `mentors/archives/{slug}/{previous_version}/`, and write the updated `meta.json`.
 
-**Step 3b — If correcting:**
+**Step 3b 鈥?If correcting:**
 Read `prompts/correction_handler.md` in full and follow its instructions.
 After correction: increment patch version and archive as above.
 
@@ -161,7 +161,7 @@ Display:
 Available mentors:
 
   slug                    name                              type        version   updated
-  ──────────────────────────────────────────────────────────────────────────────────────
+  鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€鈹€
   {slug}                  {mentor_name}                     {type}      {version} {date}
 
 Use /mentor {slug} to activate a mentor.
@@ -171,18 +171,18 @@ Use /mentor {slug} diagnose|review|advance to start in a specific mode.
 If no directories found under `mentors/generated/` (excluding `.gitkeep`):
 ```
 No mentor skills found. Run /create-mentor to build one.
-Try /mentor example-archetype to test with the included example.
+Try /mentor example-archetype, /mentor methodology-archetype, or /mentor strict-driver-archetype to test built-in archetypes.
 ```
 
 ---
 
 ## `/mentor-rollback {slug} {version}`
 
-**Step 1 — Verify.**
+**Step 1 鈥?Verify.**
 Use Glob to check `mentors/archives/{slug}/{version}/` exists.
 If not found, list available versions by globbing `mentors/archives/{slug}/*/` and reading each `archive_meta.json`.
 
-**Step 2 — Confirm.**
+**Step 2 鈥?Confirm.**
 Read `mentors/generated/{slug}/meta.json` to get the current version. Show:
 ```
 Rolling back {slug} from {current_version} to {version}.
@@ -193,7 +193,7 @@ Archive note: {note}
 Current state will be preserved in archives before rollback. Proceed? (yes / no)
 ```
 
-**Step 3 — Execute on confirmation.**
+**Step 3 鈥?Execute on confirmation.**
 - Archive current state to `mentors/archives/{slug}/{current_version}/` using Write tool
 - Copy files from `mentors/archives/{slug}/{version}/` back to `mentors/generated/{slug}/` using Read + Write
 - Update `last_updated` in `meta.json`; append rollback entry to `correction_log`
@@ -208,7 +208,7 @@ Previous state saved to archives as {current_version}.
 
 ## `/delete-mentor {slug}`
 
-**Step 1 — Confirm.**
+**Step 1 鈥?Confirm.**
 Read `mentors/generated/{slug}/meta.json` for the display name. Show:
 ```
 Delete {slug} ({mentor_name})?
@@ -219,9 +219,9 @@ Type the slug to confirm: _
 
 Only proceed if the user types the exact slug.
 
-**Step 2 — Archive and remove.**
+**Step 2 鈥?Archive and remove.**
 - Copy all files from `mentors/generated/{slug}/` to `mentors/archives/{slug}/deleted/{timestamp}/`
-- There is no automatic deletion of files — instruct the user to manually remove the directory if needed, or note it as archived-in-place
+- There is no automatic deletion of files 鈥?instruct the user to manually remove the directory if needed, or note it as archived-in-place
 
 ---
 
@@ -250,3 +250,4 @@ These apply whenever a mentor is active via `/mentor`. They are not overridable 
 | `memory.md` missing | Initialize a blank one from the template in `prompts/mentor_builder.md` |
 | Analyzer produces all low-confidence output | Warn the user, proceed with flagged items, recommend adding materials |
 | Version not found for rollback | List available versions from `mentors/archives/{slug}/` |
+

@@ -13,10 +13,17 @@
 ### Option 1: Clone directly into your Claude skills directory
 
 ```bash
-# macOS / Linux
+# macOS / Linux / Windows (Git Bash)
 git clone https://github.com/hanikasarfa94-max/Tutor-skill.git ~/.claude/skills/tutor-skill
+```
 
-# Windows
+```powershell
+# Windows (PowerShell)
+git clone https://github.com/hanikasarfa94-max/Tutor-skill.git "$env:USERPROFILE\.claude\skills\tutor-skill"
+```
+
+```cmd
+# Windows (Command Prompt)
 git clone https://github.com/hanikasarfa94-max/Tutor-skill.git %USERPROFILE%\.claude\skills\tutor-skill
 ```
 
@@ -37,8 +44,16 @@ cd tutor-skill
 pip install -r requirements.txt
 ```
 
-The parsers (`paper_parser.py`, `email_parser.py`, etc.) require `pdfminer.six` for PDF support.
-You can use the skill without them — the parsers are optional preprocessing tools that format your materials before pasting into Claude.
+The parsers require these packages for full format support:
+
+| Package | Purpose |
+|---|---|
+| `pdfminer.six` | PDF text extraction |
+| `pypdf` | Alternative PDF parser (CNKI/CJK PDFs) |
+| `python-docx` | Word (.docx) files — conference reports, theses |
+| `beautifulsoup4` | HTML/web articles — WeChat public posts |
+
+You can use the skill without any of them — the parsers are optional preprocessing tools. If a dependency is missing, that format will be skipped with a warning.
 
 ---
 
